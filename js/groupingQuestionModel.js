@@ -1,15 +1,49 @@
 import QuestionModel from 'core/js/models/questionModel';
 
-export default class ComponentNameModel extends QuestionModel {
+export default class GroupingQuestionModel extends QuestionModel {
 
   /**
    * Used to set model defaults
    */
   defaults() {
+    var itemsLength = 0;
+    const options = this.get('options');
+    if (options !== undefined) {
+      itemsLength = options._items.length;
+      this.set('_totalItems', itemsLength);
+    }
+
     // Extend from the QuestionModel defaults
     return QuestionModel.resultExtend('defaults', {
-      // TODO: Add your defaults here
+      _groupingCompleted: false,
+      _groupingIsCorrect: true,
+      _itemsSorted: 0,
+      _totalItems: itemsLength
     });
+  }
+
+  incrementItemsSorted() {
+    this.set('_itemsSorted', parseInt(this.get('_itemsSorted')) + 1);
+    if (parseInt(this.get('_itemsSorted').valueOf()) === parseInt(this.get('_totalItems').valueOf())) {
+      this.set('_groupingCompleted', true);
+      this.checkCanSubmit();
+    }
+  }
+
+  resetItemsSorted() {
+    this.set('_itemsSorted', 0);
+  }
+
+  setGroupingIsCorrectTrue() {
+    this.set('_groupingIsCorrect', true);
+  }
+
+  setGroupingIsCorrectFalse() {
+    this.set('_groupingIsCorrect', false);
+  }
+
+  resetGroupingIsCorrect() {
+    this.set('_groupingIsCorrect', true);
   }
 
   /**
@@ -38,13 +72,17 @@ export default class ComponentNameModel extends QuestionModel {
    * Used to check if the user is allowed to submit the question
    * @returns {boolean}
    */
-  canSubmit() {}
+  canSubmit() {
+    return (this.get('_groupingCompleted'));
+  }
 
   /**
    * Used to establish if the question is correct or not
    * @returns {boolean}
    */
-  isCorrect() {}
+  isCorrect() {
+    return this.get('_groupingIsCorrect');
+  }
 
   /**
    * Used by the question to determine if the question is incorrect or partly correct
@@ -79,7 +117,9 @@ export default class ComponentNameModel extends QuestionModel {
    * If shouldShowMarking the user will be given visual feedback on how they answered the question.
    * Normally done through ticks and crosses by adding classes
    */
-  shouldShowMarking() {}
+  shouldShowMarking() {
+    return (this.get('_groupingCompleted') && this.get('_isSubmitted'));
+  }
 
   /**
    * Creates a string explaining the answer (or answer range) the learner should have chosen
@@ -109,8 +149,7 @@ export default class ComponentNameModel extends QuestionModel {
     // [0, 1, 2, 3]
     // [true, false]
     let userAnswer = null;
-
-    // TODO: Write your storage code here
+    userAnswer = this.get('_groupingIsCorrect');
 
     this.set('_userAnswer', userAnswer);
   }

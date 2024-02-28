@@ -38,6 +38,105 @@
       "validators": ["required", "number"],
       "help": "How many attempts the learner is allowed"
     },
+    "firstGroup": {
+          "type": "object",
+          "title": "First matching group",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title",
+              "inputType": "Text",
+              "required": true,
+              "validators": ["required"],
+              "description": "Title text displayed above first group",
+              "default": "",
+              "translatable": true
+            },
+            "name": {
+              "type": "string",
+              "title": "Name",
+              "description": "Option text",
+              "inputType": "Text",
+              "required": true,
+              "validators": ["required"],
+              "default": "",
+              "translatable": true
+            }
+          }
+        },
+        "secondGroup": {
+          "type": "object",
+          "title": "Second matching group",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title",
+              "inputType": "Text",
+              "required": true,
+              "validators": ["required"],
+              "description": "Title text displayed above second group",
+              "default": "",
+              "translatable": true
+            },
+            "name": {
+              "type": "string",
+              "title": "Name",
+              "inputType": "Text",
+              "validators": ["required"],
+              "required": true,
+              "description": "Option text",
+              "default": "",
+              "translatable": true
+            }
+          }
+        },
+        "options": {
+          "type": "object",
+          "required": true,
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Instructions",
+              "inputType": "Text",
+              "validators": ["required"],
+              "required": true,
+              "description": "Title text displayed above the selection group",
+              "default": "",
+              "translatable": true
+            },
+            "_items": {
+                  "type": "array",
+                  "required": true,
+                  "title": "Matching Options",
+                  "items": {
+                      "type": "object",
+                      "required": true,
+                      "properties": {
+                          "text": {
+                              "type": "string",
+                              "required": true,
+                              "default": "",
+                              "title": "Option Text",
+                              "inputType": "Text",
+                              "validators": ["required"],
+                              "help": "Option text",
+                              "translatable": true
+                          },
+                          "groupName": {
+                              "type": "string",
+                              "required": true,
+                              "default": "",
+                              "title": "Group Name",
+                              "inputType": "Text",
+                              "validators": ["required"],
+                              "help": "Defines the group where the option belongs to",
+                              "translatable": true
+                          }
+                      }
+                  }
+              }
+          }
+        },
     "_canShowModelAnswer": {
       "type":"boolean",
       "required":true,

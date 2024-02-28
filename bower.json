@@ -1,21 +1,18 @@
 {
-  "name": "adapt-componentName",
-  "description": "DESCRIPTION",
+  "name": "visiblyhq-gq",
+  "description": "A question component that allows the learner to group items from a list in two groups based on a specified criteria",
   "version": "1.0.0",
   "framework": ">=5.19.1",
-  "displayName": "componentDisplayName",
-  "component": "componentName",
-  "main": "/js/adapt-componentName.js",
-  "homepage": "",
-  "repository": "",
-  "issues": "",
+  "displayName": "Grouping Question",
+  "component": "grouping",
+  "main": "/js/visiblyhq-gq.js",
   "keywords": [
     "adapt-plugin",
     "adapt-component"
   ],
   "license": "GPLv3",
   "authors": [
-    "AUTHOR_NAME <AUTHOR_EMAIL>"
+    "Bogdan Nasui <bogdan@visiblyhq.com>"
   ],
   "private": true,
   "devDependencies": {
