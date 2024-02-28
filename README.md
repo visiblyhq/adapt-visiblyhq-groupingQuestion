@@ -1,4 +1,4 @@
-# visiblyhq-gq
+# adapt-visiblyhq-groupingQuestion
 
 
 A basic component skeleton to help developers create components. All components should have a readme that contains the following:
@@ -33,13 +33,38 @@ Developers should give some description for data expected for their component an
     "_id":"c-05",
     "_parentId":"b-05",
     "_type":"component",
-    "_component":"adapt-my-component",
+    "_component":"grouping",
     "_classes":"",
     "_layout":"left",
-    "title":"My Component",
-    "displayTitle":"My Component",
+    "title":"Grouping Component",
+    "displayTitle":"Grouping Component",
     "body":"",
-    "instruction":""
+    "instruction":"Drag and drop each item from the list in the right group and select Submit.",
+    "firstGroup": {
+        "title": "Group 1",
+        "name": "group1"
+    },
+    "secondGroup": {
+        "title": "Group 2",
+        "name": "group2"
+    },
+    "options": {
+        "text": "Pick option two",
+        "_items": [
+            {
+                "text": "Option one",
+                "groupName": "group1"
+            },
+            {
+                "text": "Option two (correct)",
+                "groupName": "group1"
+            },
+            {
+                "text": "Option three",
+                "groupName": "group2"
+            }
+        ]
+    }
 }
 ```
 A description of the core settings can be found at: [Core model attributes](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes)
