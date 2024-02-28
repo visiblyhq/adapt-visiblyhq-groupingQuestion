@@ -1,3 +1,4 @@
+import Adapt from 'core/js/adapt';
 import QuestionView from 'core/js/views/questionView';
 
 class GroupingQuestionView extends QuestionView {
@@ -27,6 +28,10 @@ class GroupingQuestionView extends QuestionView {
    * Called when the user clicks submit and this.model.canSubmit() returns false
    */
   onCannotSubmit() {}
+
+  addButtonsView() {
+    Adapt.trigger("questionView:AddButtonsView", this);
+  }
 
 }
 

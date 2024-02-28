@@ -29,7 +29,14 @@ export default function (props) {
           put: false
         },
         animation: 100,
-        sort: false
+        sort: false,
+        ghostClass: 'sortable-no-ghost',
+        onStart: (event) => {
+          event.from.children[event.oldIndex].style.opacity = 0;
+        },
+        onEnd: (event) => {
+          event.from.children[event.oldIndex].style.opacity = 1;
+        }
       });
     }
 
@@ -50,6 +57,13 @@ export default function (props) {
           }
 
           incrementItemsSorted();
+          evt.item.style.opacity = 1;
+        },
+        onDrag: (event) => {
+          event.from.children[event.oldIndex].style.opacity = 0;
+        },
+        onEnd: (event) => {
+          event.from.children[event.oldIndex].style.opacity = 1;
         }
       });
     }
@@ -71,6 +85,13 @@ export default function (props) {
           }
 
           incrementItemsSorted();
+          evt.item.style.opacity = 1;
+        },
+        onDrag: (event) => {
+          event.from.children[event.oldIndex].style.opacity = 0;
+        },
+        onEnd: (event) => {
+          event.from.children[event.oldIndex].style.opacity = 1;
         }
       });
     }
